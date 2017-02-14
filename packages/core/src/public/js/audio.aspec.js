@@ -4,13 +4,41 @@ const silence = 'data:audio/ogg;base64,T2dnUwACAAAAAAAAAAAldK1LAAAAAJv1PNABHgF2b
 describe('audio', () => {
   let player
 
-  it('begins to play', () => {
-    player = window.VUDASH.player
-    player.play(silence)
-    expect(player.isPlaying).toEqual(true)
+  describe('Start event', () => {
+    beforeEach((done) => {
+      player = window.VUDASH.player
+      player.play(silence, done)
+    })
+
+    it('begins to play', (done) => {
+      expect(player.isPlaying()).toEqual(true)
+      done()
+    })
   })
 
-  it('finishes playing', () => {
-    expect(player.isPlaying).toEqual(false)
+  describe('End event', () => {
+    beforeEach((done) => {
+      player = window.VUDASH.player
+      player.play(silence, null, done)
+    })
+
+    it('finishes playing', () => {
+      expect(player.isPlaying()).toEqual(false)
+    })
+  })
+
+  describe('Queue next sound', () => {
+    let playouts = 0
+
+    beforeEach((done) => {
+      player = window.VUDASH.player
+      player.play(silence, () => { playouts = playouts++ })
+      player.play(silence, null, done)
+    })
+
+    it('begins to play', (done) => {
+      expect(player.isPlaying()).toEqual(true)
+      done()
+    })
   })
 })

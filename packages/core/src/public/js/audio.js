@@ -4,24 +4,24 @@ window.VUDASH = window.VUDASH || {}
 var VUDASH = window.VUDASH
 
 var Player = function () {
-  this.isPlaying = false
+  this.playing = false
 }
 
 Player.prototype.isPlaying = function () {
-  return this.isPlaying
+  return this.playing
 }
 
-Player.prototype.play = function (data) {
-  const self = this
+Player.prototype.play = function (data, start, end) {
+  var self = this
   var snd = new Audio(data)
   snd.addEventListener('playing', function () {
-    console.log('PLAYING AUDIO')
-    self.isPlaying = true
-  }, true)
+    self.playing = true
+    start && start()
+  })
   snd.addEventListener('ended', function () {
-        console.log('STOPPED PLAYING AUDIO')
-    self.isPlaying = false
-  }, true)
+    self.playing = false
+    end && end()
+  })
   snd.play()
 }
 
