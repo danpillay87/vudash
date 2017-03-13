@@ -29,7 +29,7 @@
   "scripts": {
     "watch": "BROWSER_SYNC=true ../../node_modules/.bin/nodemon -e html,js .",
     "start": "node app.js",
-    "test": "PORT=3418 ../../node_modules/.bin/lab  -I describe,context,it,sinon,fromSrc,fromTest,fromRoot,expect,beforeEach,afterEach,before,after,resource ../../test/unit.lab.js"
+    "test": "PORT=3418 node --inspect --debug-brk ../../node_modules/.bin/lab  -I describe,context,it,sinon,fromSrc,fromTest,fromRoot,expect,beforeEach,afterEach,before,after,resource ../../test/unit.lab.js"
   },
   "bin": {
     "vudash": "bin/vudash.js"
@@ -58,7 +58,7 @@
     "npm": "^3.9.3",
     "request": "^2.72.0",
     "request-promise": "^4.1.1",
-    "socket.io": "^1.4.6",
+    "socket.io": "^1.7.3",
     "svelte": "^1.6.3",
     "uppercamelcase": "^1.1.0",
     "vision": "^4.1.0",

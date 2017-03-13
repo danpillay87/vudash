@@ -4,7 +4,30 @@
     "columns": 5,
     "rows": 4
   },
+  "plugins": {
+    "ds-health": {
+      "module": "@vudash/datasource-rest",
+      "options": {
+        "method": "get",
+        "graph": "tag"
+      }
+    }
+  },
   "widgets": [
-    { "position": {"x": 3, "y": 0, "w": 2, "h": 1}, "widget": "vudash-widget-time" }
+    { "position": {"x": 3, "y": 0, "w": 2, "h": 1}, "widget": "vudash-widget-time" },
+    {
+      "position": {"x": 2, "y": 1, "w": 1, "h": 1},
+      "widget": "vudash-widget-statistic",
+      "datasource": {
+        "name": "ds-health",
+        "options": {
+          "url": "https://api.dk.qa.vendigo.build/health"
+        }
+      },
+      "options": {
+        "schedule": 1000,
+        "description": "xxx"
+      }
+    }
   ]
 }

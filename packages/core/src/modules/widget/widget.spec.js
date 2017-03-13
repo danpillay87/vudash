@@ -57,7 +57,7 @@ describe('modules.widget', () => {
     })
   })
 
-  context('Widget construction', () => {
+  context.only('Widget construction', () => {
     const dashboard = {
       layout: { rows: 4, columns: 5 },
       emitter: { emit: sinon.stub() }

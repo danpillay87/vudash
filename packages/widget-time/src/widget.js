@@ -49,7 +49,7 @@ class TimeWidget {
     })
 
     return {
-      schedule: 1000,
+      schedule: 10,
 
       job: () => {
         const now = moment()
